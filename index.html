@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Nada City Pulse Radio - Live Stream</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #0d1117;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .player-card {
+            background: linear-gradient(145deg, #161b22, #1f2937);
+            border-radius: 24px;
+            padding: 35px 30px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            border: 1px solid #30363d;
+        }
+        .logo-area {
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-radius: 50%;
+            margin: 0 auto 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+            box-shadow: 0 0 25px rgba(124, 58, 237, 0.45);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+        .title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #f3f4f6;
+            letter-spacing: 0.5px;
+        }
+        .subtitle {
+            font-size: 14px;
+            color: #9ca3af;
+            margin-bottom: 22px;
+            font-weight: 400;
+        }
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #ef4444;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        audio {
+            width: 100%;
+            margin-bottom: 25px;
+            border-radius: 30px;
+            outline: none;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+        .social-btn {
+            background: #21262d;
+            color: #e5e7eb;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid #30363d;
+            transition: all 0.3s ease;
+        }
+        .social-btn:hover {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="player-card">
+        <div class="logo-area">🎙️</div>
+        <div class="title">Sri Nada City Pulse Radio</div>
+        <div class="subtitle">Music & Entertainment</div>
+        <div class="live-badge">
+            <span class="live-dot"></span> LIVE
+        </div>
+
+        <!-- Audio Player -->
+        <audio controls autoplay>
+            <source src="https://s1.free-shoutcast.com:18128/stream" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <!-- Social & Contact Links -->
+        <div class="social-links">
+            <a href="#" class="social-btn" target="_blank">Facebook</a>
+            <a href="#" class="social-btn" target="_blank">WhatsApp</a>
+        </div>
+    </div>
+
+</body>
+</html>
