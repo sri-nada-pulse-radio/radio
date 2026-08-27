@@ -18,23 +18,23 @@
         }
         .player-card {
             background: #1e293b;
-            padding: 25px;
+            padding: 30px 25px;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
             text-align: center;
-            max-width: 400px;
+            max-width: 350px;
             width: 90%;
         }
         .logo-area {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             margin: 0 auto 15px auto;
             background: linear-gradient(135deg, #6366f1, #a855f7);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 35px;
+            font-size: 38px;
         }
         .title {
             font-size: 20px;
@@ -44,7 +44,7 @@
         .subtitle {
             font-size: 14px;
             color: #94a3b8;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         .live-badge {
             display: inline-block;
@@ -54,7 +54,7 @@
             border-radius: 12px;
             font-size: 12px;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         .live-dot {
             height: 8px;
@@ -64,15 +64,20 @@
             display: inline-block;
             margin-right: 5px;
         }
-        .stream-frame {
-            border: none;
-            width: 100%;
-            height: 380px;
-            border-radius: 15px;
-            background: #ffffff;
+        .listen-btn {
+            display: block;
+            padding: 14px 25px;
+            background: linear-gradient(135deg, #6c5ce7, #8e44ad);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+            transition: 0.3s;
         }
         .social-links {
-            margin-top: 20px;
             display: flex;
             justify-content: center;
             gap: 10px;
@@ -97,8 +102,8 @@
         <span class="live-dot"></span> LIVE
     </div>
 
-    <!-- Official Embedded Player -->
-    <iframe class="stream-frame" src="https://radio.free-shoutcast.com/site/91252"></iframe>
+    <!-- Direct Listening Button -->
+    <a href="https://radio.free-shoutcast.com/site/91252" target="_blank" class="listen-btn">▶️ LISTEN LIVE RADIO</a>
 
     <div class="social-links">
         <a href="#" class="social-btn" target="_blank">Facebook</a>
