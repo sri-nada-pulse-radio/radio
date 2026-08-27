@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sri Nada City Pulse Radio - Live Stream</title>
-    <!-- Howler.js for robust audio playback -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <style>
         body {
             margin: 0;
@@ -20,23 +18,23 @@
         }
         .player-card {
             background: #1e293b;
-            padding: 30px;
+            padding: 25px;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
             text-align: center;
-            max-width: 350px;
+            max-width: 400px;
             width: 90%;
         }
         .logo-area {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px auto;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px auto;
             background: linear-gradient(135deg, #6366f1, #a855f7);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 40px;
+            font-size: 35px;
         }
         .title {
             font-size: 20px;
@@ -46,7 +44,7 @@
         .subtitle {
             font-size: 14px;
             color: #94a3b8;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         .live-badge {
             display: inline-block;
@@ -56,7 +54,7 @@
             border-radius: 12px;
             font-size: 12px;
             font-weight: bold;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         .live-dot {
             height: 8px;
@@ -66,22 +64,15 @@
             display: inline-block;
             margin-right: 5px;
         }
-        .play-btn {
-            padding: 14px 35px;
-            font-size: 16px;
-            border-radius: 30px;
+        .stream-frame {
             border: none;
-            background: #6c5ce7;
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
-            width: 80%;
-            transition: 0.3s;
+            width: 100%;
+            height: 380px;
+            border-radius: 15px;
+            background: #ffffff;
         }
         .social-links {
-            margin-top: 10px;
+            margin-top: 20px;
             display: flex;
             justify-content: center;
             gap: 10px;
@@ -106,55 +97,14 @@
         <span class="live-dot"></span> LIVE
     </div>
 
-    <!-- Play Button -->
-    <button id="playBtn" class="play-btn" onclick="togglePlay()">▶️ PLAY RADIO</button>
+    <!-- Official Embedded Player -->
+    <iframe class="stream-frame" src="https://radio.free-shoutcast.com/site/91252"></iframe>
 
     <div class="social-links">
         <a href="#" class="social-btn" target="_blank">Facebook</a>
         <a href="#" class="social-btn" target="_blank">WhatsApp</a>
     </div>
 </div>
-
-<script>
-    var sound = null;
-    var isPlaying = false;
-
-    function togglePlay() {
-        var btn = document.getElementById("playBtn");
-
-        if (!isPlaying) {
-            btn.innerHTML = "⏳ LOADING...";
-            sound = new Howl({
-                src: ['https://s3.free-shoutcast.com/stream/18128'],
-                html5: true,
-                format: ['mp3'],
-                onplay: function() {
-                    btn.innerHTML = "⏸️ PAUSE";
-                    btn.style.background = "#ff4757";
-                    isPlaying = true;
-                },
-                onloaderror: function(id, err) {
-                    alert("Stream එක Load කරගැනීමට නොහැකි විය: " + err);
-                    btn.innerHTML = "▶️ PLAY RADIO";
-                    isPlaying = false;
-                },
-                onplayerror: function(id, err) {
-                    alert("Playback Error: " + err);
-                    btn.innerHTML = "▶️ PLAY RADIO";
-                    isPlaying = false;
-                }
-            });
-            sound.play();
-        } else {
-            if (sound) {
-                sound.unload(); // Stops buffering & completely releases audio stream
-            }
-            btn.innerHTML = "▶️ PLAY RADIO";
-            btn.style.background = "#6c5ce7";
-            isPlaying = false;
-        }
-    }
-</script>
 
 </body>
 </html>
