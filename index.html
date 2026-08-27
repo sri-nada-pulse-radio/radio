@@ -5,157 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sri Nada City Pulse Radio - Live Stream</title>
     <style>
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background-color: #0d1117;
+            background: #0f172a;
             color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
         }
         .player-card {
-            background: linear-gradient(145deg, #161b22, #1f2937);
-            border-radius: 24px;
-            padding: 35px 30px;
-            width: 100%;
-            max-width: 420px;
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            border: 1px solid #30363d;
+            max-width: 350px;
+            width: 90%;
         }
         .logo-area {
-            width: 130px;
-            height: 130px;
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px auto;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
             border-radius: 50%;
-            margin: 0 auto 22px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 48px;
-            box-shadow: 0 0 25px rgba(124, 58, 237, 0.45);
-            border: 3px solid rgba(255, 255, 255, 0.1);
+            font-size: 40px;
         }
         .title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: #f3f4f6;
-            letter-spacing: 0.5px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
         .subtitle {
             font-size: 14px;
-            color: #9ca3af;
-            margin-bottom: 22px;
-            font-weight: 400;
+            color: #94a3b8;
+            margin-bottom: 15px;
         }
         .live-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background-color: rgba(239, 68, 68, 0.2);
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.2);
             color: #ef4444;
-            border: 1px solid rgba(239, 68, 68, 0.4);
+            padding: 4px 12px;
+            border-radius: 12px;
             font-size: 12px;
-            font-weight: 700;
-            padding: 5px 14px;
-            border-radius: 20px;
+            font-weight: bold;
             margin-bottom: 25px;
-            letter-spacing: 1px;
         }
         .live-dot {
-            width: 8px;
             height: 8px;
+            width: 8px;
             background-color: #ef4444;
             border-radius: 50%;
-            animation: pulse 1.5s infinite;
+            display: inline-block;
+            margin-right: 5px;
         }
-        @keyframes pulse {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-        audio {
+        .stream-frame {
+            border: none;
             width: 100%;
-            margin-bottom: 25px;
-            border-radius: 30px;
-            outline: none;
+            height: 90px;
+            border-radius: 12px;
+            overflow: hidden;
         }
         .social-links {
+            margin-top: 20px;
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
         }
         .social-btn {
-            background: #21262d;
-            color: #e5e7eb;
+            color: #94a3b8;
             text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 12px;
             font-size: 14px;
-            font-weight: 600;
-            border: 1px solid #30363d;
-            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            transition: 0.3s;
         }
         .social-btn:hover {
-            background: #2563eb;
-            color: white;
-            border-color: #2563eb;
-            transform: translateY(-2px);
+            background: #334155;
+            color: #ffffff;
         }
     </style>
 </head>
 <body>
 
-    <div class="player-card">
-        <div class="logo-area">🎙️</div>
-        <div class="title">Sri Nada City Pulse Radio</div>
-        <div class="subtitle">Music & Entertainment</div>
-        <div class="live-badge">
-            <span class="live-dot"></span> LIVE
-        </div>
-
-       <!-- Custom Audio Player -->
-<button id="playBtn" onclick="togglePlay()" style="padding: 14px 35px; font-size: 16px; border-radius: 30px; border: none; background: #6c5ce7; color: white; cursor: pointer; font-weight: bold; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);">▶️ PLAY RADIO</button>
-
-<script>
-  var audio = new Audio("https://s1.free-shoutcast.com:18128/;?icy=http");
-  var isPlaying = false;
-
-  function togglePlay() {
-    var btn = document.getElementById("playBtn");
-    if (isPlaying) {
-      audio.pause();
-      audio.src = ""; // Stop stream download
-      btn.innerHTML = "▶️ PLAY RADIO";
-      btn.style.background = "#6c5ce7";
-      isPlaying = false;
-    } else {
-      audio.src = "https://s1.free-shoutcast.com:18128/;?icy=http";
-      audio.play().then(function() {
-        btn.innerHTML = "⏸️ PAUSE";
-        btn.style.background = "#ff4757";
-        isPlaying = true;
-      }).catch(function(error) {
-        alert("Audio error: " + error.message);
-      });
-    }
-  }
-</script>
-
-        <!-- Social & Contact Links -->
-        <div class="social-links">
-            <a href="#" class="social-btn" target="_blank">Facebook</a>
-            <a href="#" class="social-btn" target="_blank">WhatsApp</a>
-        </div>
+<div class="player-card">
+    <div class="logo-area">🎙️</div>
+    <div class="title">Sri Nada City Pulse Radio</div>
+    <div class="subtitle">Music & Entertainment</div>
+    <div class="live-badge">
+        <span class="live-dot"></span> LIVE
     </div>
+
+    <!-- Free-Shoutcast Embedded Player -->
+    <iframe class="stream-frame" src="https://s1.free-shoutcast.com:18128/stream" scrolling="no"></iframe>
+
+    <div class="social-links">
+        <a href="#" class="social-btn" target="_blank">Facebook</a>
+        <a href="#" class="social-btn" target="_blank">WhatsApp</a>
+    </div>
+</div>
 
 </body>
 </html>
