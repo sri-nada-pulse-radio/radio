@@ -122,11 +122,30 @@
             <span class="live-dot"></span> LIVE
         </div>
 
-        <!-- Audio Player -->
-        <audio controls autoplay>
-           <source src="https://s1.free-shoutcast.com:18128/;stream.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+        <!-- Custom JavaScript Audio Player -->
+<button id="playBtn" onclick="togglePlay()" style="padding: 14px 35px; font-size: 16px; border-radius: 30px; border: none; background: #6c5ce7; color: white; cursor: pointer; font-weight: bold; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);">▶️ PLAY RADIO</button>
+
+<script>
+  var audio = new Audio("https://s1.free-shoutcast.com:18128/;stream.mp3");
+  var isPlaying = false;
+
+  function togglePlay() {
+    var btn = document.getElementById("playBtn");
+    if (isPlaying) {
+      audio.pause();
+      btn.innerHTML = "▶️ PLAY RADIO";
+      btn.style.background = "#6c5ce7";
+    } else {
+      audio.play().then(function() {
+        btn.innerHTML = "⏸️ PAUSE";
+        btn.style.background = "#ff4757";
+      }).catch(function(error) {
+        alert("Audio play කරන්න බැරි වුණා: " + error.message);
+      });
+    }
+    isPlaying = !isPlaying;
+  }
+</script>
 
         <!-- Social & Contact Links -->
         <div class="social-links">
