@@ -122,28 +122,31 @@
             <span class="live-dot"></span> LIVE
         </div>
 
-        <!-- Custom JavaScript Audio Player -->
+       <!-- Custom Audio Player -->
 <button id="playBtn" onclick="togglePlay()" style="padding: 14px 35px; font-size: 16px; border-radius: 30px; border: none; background: #6c5ce7; color: white; cursor: pointer; font-weight: bold; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);">▶️ PLAY RADIO</button>
 
 <script>
-  var audio = new Audio("https://s1.free-shoutcast.com:18128/;stream.mp3");
+  var audio = new Audio("https://s1.free-shoutcast.com:18128/;?icy=http");
   var isPlaying = false;
 
   function togglePlay() {
     var btn = document.getElementById("playBtn");
     if (isPlaying) {
       audio.pause();
+      audio.src = ""; // Stop stream download
       btn.innerHTML = "▶️ PLAY RADIO";
       btn.style.background = "#6c5ce7";
+      isPlaying = false;
     } else {
+      audio.src = "https://s1.free-shoutcast.com:18128/;?icy=http";
       audio.play().then(function() {
         btn.innerHTML = "⏸️ PAUSE";
         btn.style.background = "#ff4757";
+        isPlaying = true;
       }).catch(function(error) {
-        alert("Audio play කරන්න බැරි වුණා: " + error.message);
+        alert("Audio error: " + error.message);
       });
     }
-    isPlaying = !isPlaying;
   }
 </script>
 
