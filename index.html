@@ -41,7 +41,7 @@
             border-radius: 12px;
             font-size: 12px;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .live-dot {
             height: 8px;
@@ -51,18 +51,22 @@
             display: inline-block;
             margin-right: 5px;
         }
-        .audio-container {
-            background: #0f172a;
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid #334155;
+
+        /* Responsive & Clean iFrame Container */
+        .iframe-container {
+            width: 100%;
+            height: 310px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #ffffff;
             margin-bottom: 20px;
         }
-        audio {
+        .iframe-container iframe {
             width: 100%;
-            height: 40px;
-            outline: none;
+            height: 100%;
+            border: none;
         }
+
         .social-links {
             display: flex;
             justify-content: center;
@@ -87,12 +91,9 @@
         <span class="live-dot"></span> LIVE BROADCAST
     </div>
 
-    <!-- Direct HTML5 Native Player -->
-    <div class="audio-container">
-        <audio controls preload="none">
-            <source src="https://s1.free-shoutcast.com:18128/;" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+    <!-- Official Shoutcast Embed Player (Full View) -->
+    <div class="iframe-container">
+        <iframe src="https://radio.free-shoutcast.com/site/91252"></iframe>
     </div>
 
     <div class="social-links">
