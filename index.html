@@ -64,17 +64,18 @@
             display: inline-block;
             margin-right: 5px;
         }
-        .listen-btn {
-            display: block;
+        .play-btn {
+            width: 100%;
             padding: 14px 25px;
             background: linear-gradient(135deg, #6c5ce7, #8e44ad);
             color: white;
+            border: none;
             border-radius: 30px;
-            text-decoration: none;
             font-weight: bold;
             font-size: 16px;
             margin-bottom: 25px;
             box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+            cursor: pointer;
             transition: 0.3s;
         }
         .social-links {
@@ -102,14 +103,46 @@
         <span class="live-dot"></span> LIVE
     </div>
 
-    <!-- Direct Listening Button -->
-    <a href="https://radio.free-shoutcast.com/site/91252" target="_blank" class="listen-btn">▶️ LISTEN LIVE RADIO</a>
+    <!-- HTML5 Native Audio Control Button -->
+    <button id="mainPlayBtn" class="play-btn" onclick="toggleAudio()">▶️ PLAY RADIO</button>
+    
+    <audio id="radioStream" preload="none">
+        <source src="https://s1.free-shoutcast.com:18128/;" type="audio/mpeg">
+    </audio>
 
     <div class="social-links">
         <a href="#" class="social-btn" target="_blank">Facebook</a>
         <a href="#" class="social-btn" target="_blank">WhatsApp</a>
     </div>
 </div>
+
+<script>
+    var audio = document.getElementById("radioStream");
+    var btn = document.getElementById("mainPlayBtn");
+    var isPlaying = false;
+
+    function toggleAudio() {
+        if (!isPlaying) {
+            btn.innerHTML = "⏳ LOADING...";
+            audio.load();
+            audio.play().then(function() {
+                btn.innerHTML = "⏸️ PAUSE";
+                btn.style.background = "#ff4757";
+                isPlaying = true;
+            }).catch(function(error) {
+                alert("Playback block වුණා. කරුණාකර නැවත ඔබන්න.");
+                btn.innerHTML = "▶️ PLAY RADIO";
+                isPlaying = false;
+            });
+        } else {
+            audio.pause();
+            audio.currentTime = 0;
+            btn.innerHTML = "▶️ PLAY RADIO";
+            btn.style.background = "linear-gradient(135deg, #6c5ce7, #8e44ad)";
+            isPlaying = false;
+        }
+    }
+</script>
 
 </body>
 </html>
